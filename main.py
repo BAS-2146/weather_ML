@@ -56,6 +56,7 @@ elif location == "mountain":
 # Final feature array in training order
 features = np.array([[temperature, humidity, wind_speed, precipitation, pressure,
                       uv_index, visibility, *cloud_vector, *season_vector, *location_vector]])
+st.write("🔍 Model Input:", features)
 
 # Prediction
 if st.button("Classify"):
