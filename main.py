@@ -18,12 +18,12 @@ model = joblib.load("best_rf.pkl")
 st.title("Weather Classifier")
 
 # Numerical inputs
-temperature = st.slider('Temperature (°C)', -20.0, 50.0)
-humidity = st.slider('Humidity (%)', 10.0, 100.0)
+temperature = st.slider('Temperature (°C)', -20.0, 70.0)
+humidity = st.slider('Humidity (%)', 20.0, 110.0)
 wind_speed = st.slider('Wind Speed (km/h)', 0.0, 30.0)
 precipitation = st.slider('Precipitation (%)', 0.0, 100.0)
-pressure = st.slider('Atmospheric Pressure (hPa)', 950.0, 1050.0)
-uv_index = st.slider('UV Index', 0, 11)
+pressure = st.slider('Atmospheric Pressure (hPa)', 960.0, 1050.0)
+uv_index = st.slider('UV Index', 0, 13)
 visibility = st.slider('Visibility (km)', 0.0, 20.0)
 
 # Categorical inputs
