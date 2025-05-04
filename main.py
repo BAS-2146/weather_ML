@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
 import numpy as np
+import os  
 
 # Label mapping for output
 label_map = {0: 'Cloudy', 1: 'Rainy', 2: 'Snowy', 3: 'Sunny'}
@@ -53,18 +54,8 @@ elif location == "mountain":
 # Coastal is the base case (all zeros)
 
 # Final feature array in training order
-features = np.array([[
-    temperature,
-    humidity,
-    wind_speed,
-    precipitation,
-    pressure,
-    uv_index,
-    visibility,
-    *cloud_vector,
-    *season_vector,
-    *location_vector
-]])
+features = np.array([[temperature, humidity, wind_speed, precipitation, pressure,
+                      uv_index, visibility, *cloud_vector, *season_vector, *location_vector]])
 
 # Prediction
 if st.button("Classify"):
@@ -72,7 +63,7 @@ if st.button("Classify"):
     label = label_map.get(result, "Unknown")
     st.success(f"Predicted Weather Type: {label}")
 
-#  Display file structure
+# File browser display
 def list_files(startpath):
     tree = ""
     for root, dirs, files in os.walk(startpath):
@@ -84,5 +75,6 @@ def list_files(startpath):
             tree += f"{subindent}📄 {f}\n"
     return tree
 
+# Show project file structure
 st.subheader("📂 Project File Structure")
 st.code(list_files("."), language="markdown")
