@@ -71,3 +71,18 @@ if st.button("Classify"):
     result = model.predict(features)[0]
     label = label_map.get(result, "Unknown")
     st.success(f"Predicted Weather Type: {label}")
+
+#  Display file structure
+def list_files(startpath):
+    tree = ""
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * level
+        tree += f"{indent}📁 {os.path.basename(root)}\n"
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            tree += f"{subindent}📄 {f}\n"
+    return tree
+
+st.subheader("📂 Project File Structure")
+st.code(list_files("."), language="markdown")
